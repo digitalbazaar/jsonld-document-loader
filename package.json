@@ -1,0 +1,39 @@
+{
+  "name": "jsonld-document-loader",
+  "version": "0.0.1-0",
+  "description": "A document loader API for jsonld.js.",
+  "main": "lib",
+  "files": [
+    "lib/"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/digitalbazaar/jsonld-document-loader.git"
+  },
+  "license": "BSD-3-Clause",
+  "author": {
+    "name": "Digital Bazaar, Inc.",
+    "email": "support@digitalbazaar.com",
+    "url": "https://digitalbazaar.com"
+  },
+  "bugs": {
+    "url": "https://github.com/digitalbazaar/jsonld-document-loader/issues"
+  },
+  "homepage": "https://github.com/digitalbazaar/jsonld-document-loader",
+  "scripts": {
+    "mocha": "mocha ./test/*.spec.js",
+    "test": "npm run mocha",
+    "preversion": "npm test",
+    "postversion": "git push --follow-tags",
+    "lint": "eslint lib test"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^6.0.0",
+    "eslint-config-digitalbazaar": "^2.0.0",
+    "mocha": "^6.1.4"
+  },
+  "engines": {
+    "node": ">=8.3.0"
+  }
+}

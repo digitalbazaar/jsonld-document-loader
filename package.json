@@ -1,6 +1,6 @@
 {
   "name": "jsonld-document-loader",
-  "version": "1.0.0",
+  "version": "1.0.1-0",
   "description": "A document loader API for jsonld.js.",
   "main": "lib",
   "files": [

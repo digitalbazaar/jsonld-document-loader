@@ -129,6 +129,7 @@ describe('jsonld-document-loader', () => {
         contextUrl: null,
         document: sampleDoc,
         documentUrl,
+        tag: 'static'
       });
     });
   }); // end documentLoader API

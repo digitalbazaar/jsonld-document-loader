@@ -25,12 +25,12 @@
     "test": "npm run mocha",
     "preversion": "npm test",
     "postversion": "git push --follow-tags",
-    "lint": "eslint lib test"
+    "lint": "eslint ."
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "eslint": "^6.0.0",
-    "eslint-config-digitalbazaar": "^2.0.0",
+    "eslint": "^7.13.0",
+    "eslint-config-digitalbazaar": "^2.6.1",
     "mocha": "^6.1.4"
   },
   "engines": {

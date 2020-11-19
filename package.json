@@ -22,16 +22,31 @@
   "homepage": "https://github.com/digitalbazaar/jsonld-document-loader",
   "scripts": {
     "mocha": "mocha ./test/*.spec.js",
-    "test": "npm run mocha",
+    "test": "npm run test-node",
+    "test-node": "cross-env NODE_ENV=test npm run mocha",
+    "test-karma": "karma start karma.conf.js",
+    "coverage": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text-summary npm run test-node",
+    "coverage-ci": "cross-env NODE_ENV=test nyc --reporter=lcovonly npm run test-node",
+    "coverage-report": "nyc report",
     "preversion": "npm test",
     "postversion": "git push --follow-tags",
     "lint": "eslint ."
   },
   "devDependencies": {
     "chai": "^4.2.0",
+    "cross-env": "^7.0.2",
     "eslint": "^7.13.0",
     "eslint-config-digitalbazaar": "^2.6.1",
-    "mocha": "^6.1.4"
+    "karma": "^5.2.3",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-mocha": "^2.0.1",
+    "karma-mocha-reporter": "^2.2.5",
+    "karma-sourcemap-loader": "^0.3.8",
+    "karma-webpack": "^4.0.2",
+    "mocha": "^6.1.4",
+    "nyc": "^15.1.0",
+    "webpack": "^4.0.0"
   },
   "engines": {
     "node": ">=8.3.0"

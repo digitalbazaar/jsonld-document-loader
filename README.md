@@ -76,11 +76,15 @@ const jdl = new JsonLdDocumentLoader();
 
 jdl.addStatic(ed25519Ctx.CONTEXT_URL, ed25519Ctx.CONTEXT);
 
-jdl.addStatic(didContext.constants.DID_CONTEXT_URL,
-  didContext.contexts.get(didContext.constants.DID_CONTEXT_URL));
+jdl.addStatic(
+  didContext.constants.DID_CONTEXT_URL,
+  didContext.contexts.get(didContext.constants.DID_CONTEXT_URL)
+);
 
-jdl.addStatic(CREDENTIALS_CONTEXT_V1_URL,
-  credentialsContexts.get(CREDENTIALS_CONTEXT_V1_URL));
+jdl.addStatic(
+  CREDENTIALS_CONTEXT_V1_URL,
+  credentialsContexts.get(CREDENTIALS_CONTEXT_V1_URL)
+);
 
 const documentLoader = jdl.documentLoader.bind(jdl);
 // Pass to jsonld, jsonld-signatures, vc-js and similar libraries

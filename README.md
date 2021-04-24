@@ -86,7 +86,7 @@ jdl.addStatic(
   credentialsContexts.get(CREDENTIALS_CONTEXT_V1_URL)
 );
 
-const documentLoader = jdl.documentLoader.bind(jdl);
+const documentLoader = jdl.build();
 // Pass to jsonld, jsonld-signatures, vc-js and similar libraries
 ```
 

@@ -1,5 +1,10 @@
 # jsonld-document-loader
 
+## 1.2.0 -
+
+### Added
+- Adds `addResolver()`, enables did-io powered cached did resolver.
+
 ## 1.1.0 - 2020-11-19
 
 ### Added

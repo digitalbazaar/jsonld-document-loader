@@ -3,7 +3,8 @@
 ## 1.2.0 -
 
 ### Added
-- Adds `addResolver()`, enables did-io powered cached did resolver.
+- Adds `addProtocolHandler()` method (and a did-specific alias for it, 
+  `addDidResolver()`).
 
 ## 1.1.0 - 2020-11-19
 

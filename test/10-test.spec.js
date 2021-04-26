@@ -5,6 +5,7 @@
 
 const should = require('chai').should();
 const {sampleDoc} = require('./mock.data');
+const {CachedResolver} = require('@digitalbazaar/did-io');
 
 const {JsonLdDocumentLoader} = require('..');
 
@@ -151,6 +152,7 @@ describe('jsonld-document-loader', () => {
     });
     it('throws an error if unsupported did method is passed in', async () => {
       const jldl = new JsonLdDocumentLoader();
+      jldl.addDidResolver(new CachedResolver());
       let result;
       let error;
       try {
@@ -176,7 +178,7 @@ describe('jsonld-document-loader', () => {
           };
         }
       };
-      jldl.addResolver(mockExampleDidDriver);
+      jldl.addDidResolver(mockExampleDidDriver);
       const result = await jldl.documentLoader(exampleDid);
       should.exist(result);
       result.should.have.keys(['contextUrl', 'document', 'documentUrl', 'tag']);

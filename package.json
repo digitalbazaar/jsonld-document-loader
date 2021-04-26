@@ -32,7 +32,10 @@
     "postversion": "git push --follow-tags",
     "lint": "eslint ."
   },
+  "dependencies": {
+  },
   "devDependencies": {
+    "@digitalbazaar/did-io": "^1.0.0",
     "chai": "^4.2.0",
     "cross-env": "^7.0.2",
     "eslint": "^7.13.0",
@@ -50,8 +53,5 @@
   },
   "engines": {
     "node": ">=12"
-  },
-  "dependencies": {
-    "@digitalbazaar/did-io": "^1.0.0"
   }
 }

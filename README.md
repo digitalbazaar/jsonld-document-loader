@@ -90,7 +90,7 @@ const documentLoader = jdl.build();
 // Pass to jsonld, jsonld-signatures, vc-js and similar libraries
 ```
 
-### `addResolver()`
+### `addDidResolver()`
 
 To add support for resolving DIDs and DID-related key ids:
 
@@ -99,7 +99,7 @@ import * as didKey from '@digitalbazaar/did-method-key';
 
 const jdl = new JsonLdDocumentLoader();
 
-jdl.addResolver(didKey.driver());
+jdl.addDidResolver(didKey.driver());
 
 // Now you can resolve did:key type DIDs and key objects
 const verificationKeyId = 'did:key:z6MkuBLrjSGt1PPADAvuv6rmvj4FfSAfffJotC6K8ZEorYmv#z6MkuBLrjSGt1PPADAvuv6rmvj4FfSAfffJotC6K8ZEorYmv';
@@ -115,6 +115,21 @@ await jdl.documentLoader(verificationKeyId);
     // ...
   }
 }
+```
+
+### `addProtocolHandler()`
+
+You can also add support for a custom protocol handler:
+
+```js
+const customHandler = {
+  get: ({url}) => {
+    // return document
+  }
+}
+
+// For entertainment purposes only; please don't actually use FTP
+jdl.addProtocolHandler({protocol: 'ftp', handler: customHandler});
 ```
 
 ## Contribute

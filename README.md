@@ -96,10 +96,14 @@ To add support for resolving DIDs and DID-related key ids:
 
 ```js
 import * as didKey from '@digitalbazaar/did-method-key';
+import {CachedResolver} from '@digitalbazaar/did-io';
 
+const cachedResolver = new CachedResolver();
 const jdl = new JsonLdDocumentLoader();
 
-jdl.addDidResolver(didKey.driver());
+cachedResolver.use(didKey.driver());
+
+jdl.addDidResolver(cachedResolver);
 
 // Now you can resolve did:key type DIDs and key objects
 const verificationKeyId = 'did:key:z6MkuBLrjSGt1PPADAvuv6rmvj4FfSAfffJotC6K8ZEorYmv#z6MkuBLrjSGt1PPADAvuv6rmvj4FfSAfffJotC6K8ZEorYmv';

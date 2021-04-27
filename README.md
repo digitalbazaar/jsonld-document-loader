@@ -127,13 +127,12 @@ You can also add support for a custom protocol handler:
 
 ```js
 const customHandler = {
-  get: ({url}) => {
+  get({url}) {
     // return document
   }
 }
 
-// For entertainment purposes only; please don't actually use FTP
-jdl.addProtocolHandler({protocol: 'ftp', handler: customHandler});
+jdl.addProtocolHandler({protocol: 'ipfs', handler: customHandler});
 ```
 
 ## Contribute

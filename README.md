@@ -90,7 +90,7 @@ const documentLoader = jdl.build();
 // Pass to jsonld, jsonld-signatures, vc-js and similar libraries
 ```
 
-### `addDidResolver()`
+### `setDidResolver()`
 
 To add support for resolving DIDs and DID-related key ids:
 
@@ -103,7 +103,7 @@ const jdl = new JsonLdDocumentLoader();
 
 cachedResolver.use(didKey.driver());
 
-jdl.addDidResolver(cachedResolver);
+jdl.setDidResolver(cachedResolver);
 
 // Now you can resolve did:key type DIDs and key objects
 const verificationKeyId = 'did:key:z6MkuBLrjSGt1PPADAvuv6rmvj4FfSAfffJotC6K8ZEorYmv#z6MkuBLrjSGt1PPADAvuv6rmvj4FfSAfffJotC6K8ZEorYmv';
@@ -121,7 +121,7 @@ await jdl.documentLoader(verificationKeyId);
 }
 ```
 
-### `addProtocolHandler()`
+### `setProtocolHandler()`
 
 You can also add support for a custom protocol handler:
 
@@ -132,7 +132,7 @@ const customHandler = {
   }
 }
 
-jdl.addProtocolHandler({protocol: 'ipfs', handler: customHandler});
+jdl.setProtocolHandler({protocol: 'ipfs', handler: customHandler});
 ```
 
 ## Contribute

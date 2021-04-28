@@ -1,10 +1,10 @@
 # jsonld-document-loader
 
-## 1.2.0 -
+## 1.2.0 - 2021-04-28
 
 ### Added
-- Adds `addProtocolHandler()` method (and a did-specific alias for it, 
-  `addDidResolver()`).
+- Adds `setProtocolHandler()` method (and a did-specific alias for it, 
+  `setDidResolver()`).
 
 ## 1.1.0 - 2020-11-19
 

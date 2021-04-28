@@ -1,6 +1,6 @@
 {
   "name": "jsonld-document-loader",
-  "version": "1.1.1-0",
+  "version": "1.2.0",
   "description": "A document loader API for jsonld.js.",
   "main": "lib",
   "files": [
@@ -32,8 +32,7 @@
     "postversion": "git push --follow-tags",
     "lint": "eslint ."
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@digitalbazaar/did-io": "^1.0.0",
     "chai": "^4.2.0",

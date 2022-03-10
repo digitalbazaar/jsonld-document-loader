@@ -1,6 +1,6 @@
 # jsonld-document-loader
 
-## 1.2.1 - 2022-03-xx
+## 1.2.1 - 2022-03-09
 
 ### Fixed
 - Only set `static` tag for statically loaded contexts.

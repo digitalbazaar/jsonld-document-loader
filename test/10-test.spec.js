@@ -1,5 +1,5 @@
 /*!
- * Copyright (c) 2019-2020 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2019-2022 Digital Bazaar, Inc. All rights reserved.
  */
 'use strict';
 
@@ -181,7 +181,7 @@ describe('jsonld-document-loader', () => {
       jldl.setDidResolver(mockExampleDidDriver);
       const result = await jldl.documentLoader(exampleDid);
       should.exist(result);
-      result.should.have.keys(['contextUrl', 'document', 'documentUrl', 'tag']);
+      result.should.have.keys(['contextUrl', 'document', 'documentUrl']);
       result.documentUrl.should.equal(exampleDid);
       result.document['@context'].should.equal('https://www.w3.org/ns/did/v1');
     });

@@ -23,9 +23,9 @@
   "homepage": "https://github.com/digitalbazaar/jsonld-document-loader",
   "scripts": {
     "mocha": "mocha ./test/*.spec.js",
-    "test": "npm run test-node",
+    "test": "npm run test-node && npm run test-karma",
     "test-node": "cross-env NODE_ENV=test npm run mocha",
-    "test-karma": "karma start karma.conf.js",
+    "test-karma": "karma start karma.conf.cjs",
     "coverage": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text-summary npm run test-node",
     "coverage-ci": "cross-env NODE_ENV=test nyc --reporter=lcovonly npm run test-node",
     "coverage-report": "nyc report",
@@ -33,23 +33,24 @@
     "postversion": "git push --follow-tags",
     "lint": "eslint ."
   },
-  "dependencies": {},
   "devDependencies": {
-    "@digitalbazaar/did-io": "^1.0.0",
-    "chai": "^4.2.0",
-    "cross-env": "^7.0.2",
-    "eslint": "^7.13.0",
-    "eslint-config-digitalbazaar": "^2.6.1",
-    "karma": "^5.2.3",
+    "@digitalbazaar/did-io": "^2.0.0",
+    "chai": "^4.3.7",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.33.0",
+    "eslint-config-digitalbazaar": "^4.2.0",
+    "eslint-plugin-jsdoc": "^39.7.5",
+    "eslint-plugin-unicorn": "^45.0.2",
+    "karma": "^6.4.1",
     "karma-chai": "^0.1.0",
-    "karma-chrome-launcher": "^3.1.0",
+    "karma-chrome-launcher": "^3.1.1",
     "karma-mocha": "^2.0.1",
     "karma-mocha-reporter": "^2.2.5",
     "karma-sourcemap-loader": "^0.3.8",
-    "karma-webpack": "^4.0.2",
-    "mocha": "^6.1.4",
+    "karma-webpack": "^5.0.0",
+    "mocha": "^10.2.0",
     "nyc": "^15.1.0",
-    "webpack": "^4.0.0"
+    "webpack": "^5.75.0"
   },
   "engines": {
     "node": ">=12"

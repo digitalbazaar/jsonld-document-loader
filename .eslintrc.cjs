@@ -7,5 +7,6 @@ module.exports = {
     'digitalbazaar',
     'digitalbazaar/jsdoc',
     'digitalbazaar/module'
-  ]
+  ],
+  ignorePatterns: ['node_modules/']
 };

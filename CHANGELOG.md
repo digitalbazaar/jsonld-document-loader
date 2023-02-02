@@ -1,5 +1,13 @@
 # jsonld-document-loader
 
+## 2.0.0 - 2023-TBD
+
+### Changed
+- **BREAKING**: Convert to module (ESM).
+- **BREAKING**: Drop support for node <= 14.
+- Update dev deps to latest.
+- Use `c8@7.12.0` for coverage.
+
 ## 1.2.1 - 2022-03-09
 
 ### Fixed
@@ -8,7 +16,7 @@
 ## 1.2.0 - 2021-04-28
 
 ### Added
-- Adds `setProtocolHandler()` method (and a did-specific alias for it, 
+- Adds `setProtocolHandler()` method (and a did-specific alias for it,
   `setDidResolver()`).
 
 ## 1.1.0 - 2020-11-19

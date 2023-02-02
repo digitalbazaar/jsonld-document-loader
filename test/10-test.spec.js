@@ -1,13 +1,12 @@
 /*!
  * Copyright (c) 2019-2022 Digital Bazaar, Inc. All rights reserved.
  */
-'use strict';
+import {CachedResolver} from '@digitalbazaar/did-io';
+import chai from 'chai';
+import {JsonLdDocumentLoader} from '../lib/index.js';
+import {sampleDoc} from './mock.data.js';
 
-const should = require('chai').should();
-const {sampleDoc} = require('./mock.data');
-const {CachedResolver} = require('@digitalbazaar/did-io');
-
-const {JsonLdDocumentLoader} = require('..');
+const should = chai.should();
 
 describe('jsonld-document-loader', () => {
   describe('addStatic API', () => {

@@ -25,7 +25,7 @@ TBD
 
 ## Install
 
-- Node.js 12+ is required.
+- Node.js >= 16 is required.
 
 ### NPM
 
@@ -49,8 +49,6 @@ npm install
 
 ```js
 import {JsonLdDocumentLoader} from 'jsonld-document-loader';
-// or
-const {JsonLdDocumentLoader} = require('jsonld-document-loader');
 
 const loader = new JsonLdDocumentLoader();
 ```
@@ -61,7 +59,7 @@ The `addStatic()` method allows developers to load fixed static contexts and
 documents, to ensure known versions and contents, without going out to the
 network.
 
-For example, to add support for the DID Core context, the VC context, and crypto 
+For example, to add support for the DID Core context, the VC context, and crypto
 suite specific contexts:
 
 ```js

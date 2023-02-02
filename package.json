@@ -2,13 +2,14 @@
   "name": "jsonld-document-loader",
   "version": "1.2.2-0",
   "description": "A document loader API for jsonld.js.",
-  "main": "lib",
+  "type": "module",
+  "main": "./lib/index.js",
   "files": [
-    "lib/"
+    "lib/**/*.js"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/digitalbazaar/jsonld-document-loader.git"
+    "url": "https://github.com/digitalbazaar/jsonld-document-loader"
   },
   "license": "BSD-3-Clause",
   "author": {

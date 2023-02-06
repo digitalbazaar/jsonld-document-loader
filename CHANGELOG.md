@@ -1,6 +1,6 @@
 # jsonld-document-loader
 
-## 2.0.0 - 2023-TBD
+## 2.0.0 - 2023-02-06
 
 ### Changed
 - **BREAKING**: Convert to module (ESM).

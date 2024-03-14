@@ -121,6 +121,16 @@ await jdl.documentLoader(verificationKeyId);
 
 ### `setProtocolHandler()`
 
+You can add support for loading `https`-based JSON-LD contexts (a common
+case) by using your own loader or the one that comes with the
+[jsonld](https://www.npmjs.com/package/jsonld) package:
+
+```js
+import * as jsonld from 'jsonld';
+
+jdl.setProtocolHandler({protocol: 'https', handler: jsonld.documentLoader});
+```
+
 You can also add support for a custom protocol handler:
 
 ```js

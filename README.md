@@ -1,7 +1,7 @@
 # JSON-LD Document Loader _(jsonld-document-loader)_
 
 [![Build Status](https://img.shields.io/github/workflow/status/digitalbazaar/jsonld-document-loader/Node.js%20CI)](https://github.com/digitalbazaar/jsonld-document-loader/actions?query=workflow%3A%22Node.js+CI%22)
-[![NPM Version](https://img.shields.io/npm/v/jsonld-document-loader.svg)](https://npm.im/@digitalbazaar/jsonld-document-loader)
+[![NPM Version](https://img.shields.io/npm/v/jsonld-document-loader.svg)](https://npm.im/jsonld-document-loader)
 
 > A document loader API for jsonld.js.
 

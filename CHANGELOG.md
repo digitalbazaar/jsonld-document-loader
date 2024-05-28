@@ -1,5 +1,11 @@
 # jsonld-document-loader
 
+## 2.1.0 -
+
+### Added
+- Constructor now can accept a Map of contexts for the loader.
+- Constructor can now accept a Map of protocolHandlers for the loader.
+
 ## 2.0.0 - 2023-02-06
 
 ### Changed

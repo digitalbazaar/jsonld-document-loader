@@ -184,5 +184,48 @@ describe('jsonld-document-loader', () => {
       result.documentUrl.should.equal(exampleDid);
       result.document['@context'].should.equal('https://www.w3.org/ns/did/v1');
     });
+    it('accepts static documents from Constructor', async () => {
+      const expectedUrl = 'https://example.org/example/v1';
+      const expectedDocument = {
+        '@context': {
+          id: '@id',
+          type: '@type',
+          '@protected': true
+        }
+      };
+      const documents = new Map([[expectedUrl, expectedDocument]]);
+      const jldl = new JsonLdDocumentLoader({documents});
+      const result = await jldl.documentLoader(expectedUrl);
+      should.exist(result, `Expected ${expectedUrl} to return ` +
+        `a result.`);
+      result.should.have.keys(['contextUrl', 'document', 'documentUrl', 'tag']);
+      result.documentUrl.should.equal(expectedUrl);
+      should.exist(result.document, `Expected ${expectedUrl} to return ` +
+        `a document.`);
+      result.document.should.eql(expectedDocument);
+    });
+    it('accepts protocolHandlers from Constructor', async () => {
+      const expectedProtocol = 'ftp';
+      const expectedUrl = 'ftp://example.org/example/v1';
+      const expectedDocument = {
+        '@context': expectedUrl,
+        id: 'did:ex:12345'
+      };
+      const expectedMethod = {
+        get: async () => {
+          return {...expectedDocument};
+        }
+      };
+      const protocolHandlers = new Map([[expectedProtocol, expectedMethod]]);
+      const jldl = new JsonLdDocumentLoader({protocolHandlers});
+      const result = await jldl.documentLoader(expectedUrl);
+      should.exist(result, `Expected ${expectedUrl} to return ` +
+        `a result.`);
+      result.should.have.keys(['contextUrl', 'document', 'documentUrl']);
+      result.documentUrl.should.equal(expectedUrl);
+      should.exist(result.document, `Expected ${expectedUrl} to return ` +
+        `a document.`);
+      result.document.should.eql(expectedDocument);
+    });
   }); // end documentLoader API
 });

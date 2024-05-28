@@ -31,7 +31,7 @@ TBD
 
 To install via NPM:
 
-```
+```sh
 npm install --save jsonld-document-loader
 ```
 
@@ -39,7 +39,7 @@ npm install --save jsonld-document-loader
 
 To install locally (for development):
 
-```
+```sh
 git clone https://github.com/digitalbazaar/jsonld-document-loader.git
 cd jsonld-document-loader
 npm install

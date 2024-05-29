@@ -215,7 +215,7 @@ describe('jsonld-document-loader', () => {
       };
       const documents = new Map([[expectedUrl, expectedDocument]]);
       const jldl = new JsonLdDocumentLoader({documents});
-      // mutate the context passed in
+      // replace the context passed in
       documents.set(expectedUrl, false);
       const result = await jldl.documentLoader(expectedUrl);
       should.exist(result, `Expected ${expectedUrl} to return ` +
@@ -224,9 +224,9 @@ describe('jsonld-document-loader', () => {
       result.documentUrl.should.equal(expectedUrl);
       should.exist(result.document, `Expected ${expectedUrl} to return ` +
         `a document.`);
-      // original document is there there
+      // original document is still in this.documents
       result.document.should.eql(expectedDocument);
-      // mutated document is in original Map
+      // document is replaced by new value in original map
       documents.get(expectedUrl).should.be.false;
     });
     it('accepts protocolHandlers from Constructor', async () => {

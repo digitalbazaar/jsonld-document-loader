@@ -52,8 +52,5 @@
   },
   "engines": {
     "node": ">=16"
-  },
-  "dependencies": {
-    "klona": "^2.0.6"
   }
 }

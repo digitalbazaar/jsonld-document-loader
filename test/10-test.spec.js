@@ -96,6 +96,42 @@ describe('jsonld-document-loader', () => {
       should.exist(error);
       error.should.be.instanceOf(TypeError);
     });
+    it('should clone a document', async () => {
+      const documentUrl = 'https://example.org/context';
+      const originalDoc = {
+        '@context': {
+          id: '@id',
+          type: '@type',
+          '@protected': true,
+          myTerm: {
+            '@id': 'https://example.org/context#myTerm',
+            '@type': 'https://example.org/types#myType'
+          }
+        }
+      };
+      const expectedDoc = structuredClone(originalDoc);
+      const jldl = new JsonLdDocumentLoader();
+      jldl.addStatic(documentUrl, originalDoc);
+      originalDoc.mutated = true;
+      const result = await jldl.documentLoader(documentUrl);
+      should.exist(
+        result,
+        `Expected documentLoader to return a document for ${documentUrl}.`
+      );
+      result.should.be.an(
+        'object',
+        'Expected document to be an object.'
+      );
+      should.exist(result.document, 'Expected result to have a document.');
+      result.document.should.not.eql(
+        originalDoc,
+        'Expected document from documentLoader to not equal mutated document.'
+      );
+      result.document.should.eql(
+        expectedDoc,
+        'Expected document from documentLoader to equal unmutated document.'
+      );
+    });
   }); // end addStatic API
 
   describe('documentLoader API', () => {

@@ -11,6 +11,7 @@
 - [Security](#security)
 - [Install](#install)
 - [Usage](#usage)
+  - [JsonLdDocumentLoader](#jsonlddocumentloader)
   - [addStatic](#addstatic)
   - [setDidResolver](#setdidresolver)
   - [setProtocolHandler](#setprotocolhandler)
@@ -49,6 +50,31 @@ npm install
 ```
 
 ## Usage
+
+### `JsonLdDocumentLoader`
+The Constructor for `JsonLdDocumentLoader` can be passed two optional
+parameters: `documents` & `protocolHandlers`. Documents needs to be a Map
+with the keys as strings and the values as jsonld documents such as contexts.
+
+```js
+import {JsonLdDocumentLoader} from 'jsonld-document-loader';
+
+const url = 'https://example.org/context';
+const context = { 
+  "@context": {
+    "id": "@id",
+    "type": "@type",
+    "@protected": true,
+    "myTerm": {
+      "@id": "https://example.org/context#myTerm",
+      "@type": "https://example.org/types#myType"
+    }   
+  }
+};
+const documents = new Map([[url, context]]);
+const jldl = new JsonLdDocumentLoader({documents});
+```
+
 
 ```js
 import {JsonLdDocumentLoader} from 'jsonld-document-loader';

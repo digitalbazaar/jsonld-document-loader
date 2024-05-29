@@ -52,6 +52,12 @@ npm install
 ## Usage
 
 ### `JsonLdDocumentLoader`
+```js
+import {JsonLdDocumentLoader} from 'jsonld-document-loader';
+
+const loader = new JsonLdDocumentLoader();
+```
+
 The Constructor for `JsonLdDocumentLoader` can be passed two optional
 parameters: `documents` & `protocolHandlers`. Documents needs to be a Map
 with the keys as strings and the values as jsonld documents such as contexts.
@@ -74,12 +80,18 @@ const context = {
 const documents = new Map([[url, context]]);
 const jldl = new JsonLdDocumentLoader({documents});
 ```
-
+In order to pass in protocolHandlers init a Map with the
+key as the protocol as a string and the value an object with a get function.
 
 ```js
-import {JsonLdDocumentLoader} from 'jsonld-document-loader';
-
-const loader = new JsonLdDocumentLoader();
+const protocol = 'ftp',
+const handler = {
+  get: async (url) => {
+    return ftp.get(url);
+  }
+}
+const protocolHandlers = new Map([[protocol, handler]]);
+const jldl = new JsonLdDocumentLoader({protocolHandlers});
 ```
 
 ### `addStatic()`

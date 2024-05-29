@@ -204,6 +204,31 @@ describe('jsonld-document-loader', () => {
         `a document.`);
       result.document.should.eql(expectedDocument);
     });
+    it('copies static documents from Constructor', async () => {
+      const expectedUrl = 'https://example.org/example/v1';
+      const expectedDocument = {
+        '@context': {
+          id: '@id',
+          type: '@type',
+          '@protected': true
+        }
+      };
+      const documents = new Map([[expectedUrl, expectedDocument]]);
+      const jldl = new JsonLdDocumentLoader({documents});
+      // mutate the context passed in
+      documents.set(expectedUrl, false);
+      const result = await jldl.documentLoader(expectedUrl);
+      should.exist(result, `Expected ${expectedUrl} to return ` +
+        `a result.`);
+      result.should.have.keys(['contextUrl', 'document', 'documentUrl', 'tag']);
+      result.documentUrl.should.equal(expectedUrl);
+      should.exist(result.document, `Expected ${expectedUrl} to return ` +
+        `a document.`);
+      // original document is there there
+      result.document.should.eql(expectedDocument);
+      // mutated document is in original Map
+      documents.get(expectedUrl).should.be.false;
+    });
     it('accepts protocolHandlers from Constructor', async () => {
       const expectedProtocol = 'ftp';
       const expectedUrl = 'ftp://example.org/example/v1';

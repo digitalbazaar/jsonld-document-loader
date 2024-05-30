@@ -3,7 +3,7 @@
 ## 2.0.1 -
 
 ### Changed
-- addStatic deep clones documents to avoid mutation.
+- `addStatic` deep clones documents to avoid mutation.
 
 ## 2.0.0 - 2023-02-06
 

@@ -116,21 +116,17 @@ describe('jsonld-document-loader', () => {
       const result = await jldl.documentLoader(documentUrl);
       should.exist(
         result,
-        `Expected documentLoader to return a document for ${documentUrl}.`
-      );
+        `Expected documentLoader to return a document for ${documentUrl}.`);
       result.should.be.an(
         'object',
-        'Expected document to be an object.'
-      );
+        'Expected document to be an object.');
       should.exist(result.document, 'Expected result to have a document.');
       result.document.should.not.eql(
         originalDoc,
-        'Expected document from documentLoader to not equal mutated document.'
-      );
+        'Expected document from documentLoader to not equal mutated document.');
       result.document.should.eql(
         expectedDoc,
-        'Expected document from documentLoader to equal unmutated document.'
-      );
+        'Expected document from documentLoader to equal unmutated document.');
     });
   }); // end addStatic API
 

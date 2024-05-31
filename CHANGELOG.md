@@ -4,7 +4,7 @@
 
 ### Changed
 - `addStatic` deep clones documents to avoid mutation.
-  - Use of [structuredClone](https://developer.mozilla.org/en-US/docs/Web/API/structuredClone) might require polyfil.
+  - Use of [structuredClone](https://developer.mozilla.org/en-US/docs/Web/API/structuredClone) might require polyfill.
 
 ## 2.0.0 - 2023-02-06
 

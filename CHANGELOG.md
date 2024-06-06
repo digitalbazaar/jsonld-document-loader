@@ -1,6 +1,6 @@
 # jsonld-document-loader
 
-## 2.1.0 - 2024-xx-xx
+## 2.1.0 - 2024-06-05
 
 ### Changed
 - `addStatic` deep clones documents to avoid shared document mutation issues.

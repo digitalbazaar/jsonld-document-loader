@@ -25,7 +25,7 @@ TBD
 
 ## Install
 
-- Node.js >= 16 is required.
+- Node.js >= 18 is required.
 
 ### NPM
 
@@ -57,7 +57,7 @@ const loader = new JsonLdDocumentLoader();
 
 The `addStatic()` method allows developers to load fixed static contexts and
 documents, to ensure known versions and contents, without going out to the
-network.
+network. The context is cloned when added.
 
 For example, to add support for the DID Core context, the VC context, and crypto
 suite specific contexts:

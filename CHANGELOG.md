@@ -1,10 +1,15 @@
 # jsonld-document-loader
 
-## 2.0.1 -
+## 2.1.0 - 2024-xx-xx
 
 ### Changed
-- `addStatic` deep clones documents to avoid mutation.
-  - Use of [structuredClone](https://developer.mozilla.org/en-US/docs/Web/API/structuredClone) might require polyfill.
+- `addStatic` deep clones documents to avoid shared document mutation issues.
+  - The clone adds potential time and memory use considerations depending on
+    the frequency of `addStatic` calls and on document size. For expected use
+    cases this should be minimal.
+  - [structuredClone](https://developer.mozilla.org/en-US/docs/Web/API/structuredClone)
+    is used and may not be available in old browsers and Node.js before v17.
+    Use a polyfill if needed.
 
 ## 2.0.0 - 2023-02-06
 

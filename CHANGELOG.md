@@ -1,6 +1,6 @@
 # jsonld-document-loader
 
-## 2.2.0 - 2024-xx-xx
+## 2.2.0 - 2024-07-31
 
 ### Added
 - `addDocuments({documents})` to add many URL to document mappings from an

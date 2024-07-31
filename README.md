@@ -53,7 +53,7 @@ import {JsonLdDocumentLoader} from 'jsonld-document-loader';
 const loader = new JsonLdDocumentLoader();
 ```
 
-### `addStatic()`
+### `addStatic(url, document)`
 
 The `addStatic()` method allows developers to load fixed static contexts and
 documents, to ensure known versions and contents, without going out to the
@@ -86,6 +86,20 @@ jdl.addStatic(
 
 const documentLoader = jdl.build();
 // Pass to jsonld, jsonld-signatures, vc-js and similar libraries
+```
+
+### `addDocuments({documents})`
+
+Uses `addStatic()` to add many documents from an iterable object that returns
+values of the form `[url, document]`. Can be used directly with a Map
+associating URLs to documents.
+
+```js
+import {contexts as credContexts} from '@digitalbazaar/credentials-context';
+
+const jdl = new JsonLdDocumentLoader();
+
+jdl.addDocuments({documents: credContexts});
 ```
 
 ### `setDidResolver()`

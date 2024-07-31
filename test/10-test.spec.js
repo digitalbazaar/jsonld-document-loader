@@ -128,7 +128,106 @@ describe('jsonld-document-loader', () => {
         expectedDoc,
         'Expected document from documentLoader to equal unmutated document.');
     });
+    it('allows overwrites', () => {
+      const jldl = new JsonLdDocumentLoader();
+      const documentUrl = 'https://example.com/foo.jsonld';
+      let error;
+      try {
+        jldl.addStatic(documentUrl, sampleDoc);
+        jldl.addStatic(documentUrl, sampleDoc);
+      } catch(e) {
+        error = e;
+      }
+      should.not.exist(error);
+    });
   }); // end addStatic API
+
+  describe('addDocuments API', () => {
+    it('throws TypeError with no documents', () => {
+      const jldl = new JsonLdDocumentLoader();
+      let error;
+      try {
+        jldl.addDocuments();
+      } catch(e) {
+        error = e;
+      }
+      should.exist(error);
+      error.should.be.instanceOf(TypeError);
+    });
+    it('throws TypeError with null documents', () => {
+      const jldl = new JsonLdDocumentLoader();
+      let error;
+      try {
+        jldl.addDocuments({documents: null});
+      } catch(e) {
+        error = e;
+      }
+      should.exist(error);
+      error.should.be.instanceOf(TypeError);
+    });
+    it('throws TypeError with undefined documents', () => {
+      const jldl = new JsonLdDocumentLoader();
+      let error;
+      try {
+        jldl.addDocuments({documents: undefined});
+      } catch(e) {
+        error = e;
+      }
+      should.exist(error);
+      error.should.be.instanceOf(TypeError);
+    });
+    it('throws TypeError with non-iterable', () => {
+      const jldl = new JsonLdDocumentLoader();
+      let error;
+      try {
+        jldl.addDocuments({documents: {}});
+      } catch(e) {
+        error = e;
+      }
+      should.exist(error);
+      error.should.be.instanceOf(TypeError);
+    });
+    it('add multiple documents', async () => {
+      const jldl = new JsonLdDocumentLoader();
+      const documentUrl1 = 'https://example.com/foo1.jsonld';
+      const documentUrl2 = 'https://example.com/foo2.jsonld';
+      const documents = new Map([
+        [documentUrl1, sampleDoc],
+        [documentUrl2, sampleDoc]
+      ]);
+      let error;
+      try {
+        jldl.addDocuments({documents});
+        const documentLoader = jldl.build();
+        const result1 = await documentLoader(documentUrl1);
+        should.exist(result1);
+        should.exist(result1.documentUrl);
+        should.exist(result1.document);
+        const result2 = await documentLoader(documentUrl2);
+        should.exist(result2);
+        should.exist(result2.documentUrl);
+        should.exist(result2.document);
+      } catch(e) {
+        error = e;
+      }
+      should.not.exist(error);
+    });
+    it('allows overwrites', () => {
+      const jldl = new JsonLdDocumentLoader();
+      const documentUrl1 = 'https://example.com/foo1.jsonld';
+      const documents = [
+        [documentUrl1, sampleDoc],
+        [documentUrl1, sampleDoc]
+      ];
+      let error;
+      try {
+        jldl.addDocuments({documents});
+      } catch(e) {
+        error = e;
+      }
+      should.not.exist(error);
+    });
+  }); // end addDocuments API
 
   describe('documentLoader API', () => {
     it('throws error when url is not a string', async () => {

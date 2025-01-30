@@ -1,5 +1,5 @@
 /*!
- * Copyright (c) 2019-2023 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2019-2025 Digital Bazaar, Inc. All rights reserved.
  */
 import {CachedResolver} from '@digitalbazaar/did-io';
 import chai from 'chai';
@@ -316,4 +316,42 @@ describe('jsonld-document-loader', () => {
       result.document['@context'].should.equal('https://www.w3.org/ns/did/v1');
     });
   }); // end documentLoader API
+
+  describe('clone API', () => {
+    it('overwrites do not modify original', async () => {
+      const jldl = new JsonLdDocumentLoader();
+      const documentUrl = 'https://example.com/foo.jsonld';
+      jldl.addStatic(documentUrl, sampleDoc);
+      const sampleDoc2 = structuredClone(sampleDoc);
+      sampleDoc2.name = 'Jane Doe';
+
+      let error;
+      try {
+        const jldl2 = jldl.clone();
+        const documentLoader1 = jldl.build();
+        const documentLoader2 = jldl2.build();
+        const {document: result1a} = await documentLoader1(documentUrl);
+        const {document: result2a} = await documentLoader2(documentUrl);
+        result1a.should.deep.equal(sampleDoc);
+        result2a.should.deep.equal(result1a);
+
+        // now change cloned loader
+        jldl2.addStatic(documentUrl, sampleDoc2);
+        const {document: result1b} = await documentLoader1(documentUrl);
+        const {document: result2b} = await documentLoader2(documentUrl);
+        // `jldl` result should be unchanged
+        result1b.should.deep.equal(result1a);
+        result1b.should.deep.equal(sampleDoc);
+        // `jldl2` new result should be different and equal `sampleDoc2` and
+        // `jldl2` old result should still equal `sampleDoc`
+        result1b.should.not.deep.equal(result2b);
+        result2b.should.not.deep.equal(result2a);
+        result2b.should.deep.equal(sampleDoc2);
+        result2a.should.deep.equal(sampleDoc);
+      } catch(e) {
+        error = e;
+      }
+      should.not.exist(error);
+    });
+  }); // end clone API
 });

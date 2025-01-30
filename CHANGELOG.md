@@ -1,6 +1,6 @@
 # jsonld-document-loader
 
-## 2.3.0 - 2025-mm-dd
+## 2.3.0 - 2025-01-30
 
 ### Added
 - Add `.clone()` API for cloning a document loader.
